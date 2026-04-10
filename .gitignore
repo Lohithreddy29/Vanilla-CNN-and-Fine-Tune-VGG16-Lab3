@@ -1,0 +1,29 @@
+# Python virtual environment
+# The repository includes the project virtual environment for reproducibility.
+
+# Dataset directories
+# The repository includes datasets and raw images for the project.
+
+venv/
+*.h5
+*.keras
+*.dll
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+
+# VS Code
+.vscode/
+
+
+
