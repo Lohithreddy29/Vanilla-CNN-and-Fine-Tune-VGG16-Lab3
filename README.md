@@ -1,67 +1,79 @@
 # Vanilla CNN and Fine-Tune VGG16
 
-This repository contains a complete image classification project for cats vs dogs using a vanilla CNN and a fine-tuned VGG16 model.
+A cats vs dogs image classification project using two models:
 
-## What is included
+- A vanilla convolutional neural network (CNN)
+- A fine-tuned VGG16-based model
 
-- Vanilla_CNN_And_Finetune.ipynb: Jupyter notebook with the full training, validation, and evaluation pipeline.
-- README.md: This project documentation file.
-- equirements.txt: Exact Python dependencies needed to run the notebook and reproduce results.
-- env/: Included Python virtual environment with all installed packages.
-- data/: Prepared dataset split into training, validation, and test folders.
-- PetImages/: Original source image dataset for cats and dogs.
-- cnn_best.h5, cnn_best.keras, gg_best.h5: Saved Keras model weights.
+This repository contains the notebook, dataset folders, saved model weights, and dependency list needed to reproduce the training and evaluation workflow.
 
-## Repository structure
+## Repository contents
 
-`
-Vanilla-CNN-and-Fine-Tune-VGG16-Lab3/
-+-- README.md
-+-- requirements.txt
-+-- Vanilla_CNN_And_Finetune.ipynb
-+-- cnn_best.h5
-+-- cnn_best.keras
-+-- vgg_best.h5
-+-- data/
-¦   +-- train/
-¦   ¦   +-- cats/
-¦   ¦   +-- dogs/
-¦   +-- val/
-¦   ¦   +-- cats/
-¦   ¦   +-- dogs/
-¦   +-- test/
-¦       +-- cats/
-¦       +-- dogs/
-+-- PetImages/
-¦   +-- Cat/
-¦   +-- Dog/
-+-- venv/
-    +-- Scripts/
-    +-- Lib/
-    +-- ...
-`
+- `Vanilla_CNN_And_Finetune.ipynb` â€” Jupyter notebook with the full training, validation, and evaluation pipeline
+- `requirements.txt` â€” Python package list required to run the notebook
+- `cnn_best.h5`, `cnn_best.keras`, `vgg_best.h5` â€” saved Keras model files
+- `data/` â€” prepared dataset, separated into `train/`, `val/`, and `test/`
+- `PetImages/` â€” original cats and dogs source images
+- `venv/` â€” local Python virtual environment
 
-## Setup instructions
+## Dataset layout
+
+The `data/` folder should contain the processed dataset split by class and usage:
+
+- `data/train/cats/`
+- `data/train/dogs/`
+- `data/val/cats/`
+- `data/val/dogs/`
+- `data/test/cats/`
+- `data/test/dogs/`
+
+The `PetImages/` folder contains the original raw image source files for cats and dogs.
+
+## Setup
 
 1. Open a terminal in the repository root.
 2. Activate the virtual environment:
-   `powershell
+
+   ```powershell
    .\venv\Scripts\Activate.ps1
-   `
+   ```
+
 3. Install dependencies if needed:
-   `powershell
+
+   ```powershell
    pip install -r requirements.txt
-   `
-4. Open Vanilla_CNN_And_Finetune.ipynb in Jupyter Notebook or JupyterLab.
+   ```
+
+4. Launch the notebook with Jupyter Lab or Jupyter Notebook.
+
+## Usage
+
+- Run the notebook cells from top to bottom.
+- The notebook includes data loading, model definition, training, evaluation, and model saving.
+- Use the saved weights (`cnn_best.h5`, `cnn_best.keras`, `vgg_best.h5`) for inference or to resume training.
 
 ## Notes
 
-- env/, data/, and PetImages/ are included in this repository so the project is fully reproducible.
-- equirements.txt captures the environment packages used for this project.
-- The model weight files are included so you can run inference or resume training.
+- The repository includes the data folders and saved model files so the project can be reproduced locally.
+- If you want a lighter repository, you can keep `data/`, `PetImages/`, and model weight files out of version control and regenerate them locally.
 
 ## Recommended workflow
 
-- Make changes in Vanilla_CNN_And_Finetune.ipynb.
-- Keep the datasets and models in place.
-- Use the included equirements.txt to recreate the environment on another machine.
+1. Activate the environment.
+2. Open `Vanilla_CNN_And_Finetune.ipynb`.
+3. Test the training and evaluation pipeline.
+4. Save model checkpoints and update the notebook as needed.
+
+## Recommended `.gitignore`
+
+Files to ignore for a cleaner repository:
+
+```gitignore
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+```

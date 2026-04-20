@@ -1,13 +1,5 @@
-# Ignore datasets (VERY IMPORTANT)
-PetImages/
-data/
-
 # Ignore virtual environment
 venv/
-
-# Ignore model files
-*.h5
-*.keras
 
 # Python artifacts
 __pycache__/
