@@ -1,3 +1,9 @@
+# Ignore large dataset and model files
+data/
+PetImages/
+*.h5
+*.keras
+
 # Ignore virtual environment
 venv/
 
