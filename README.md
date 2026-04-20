@@ -5,20 +5,30 @@ A cats vs dogs image classification project using two models:
 - A vanilla convolutional neural network (CNN)
 - A fine-tuned VGG16-based model
 
-This repository contains the notebook, dataset folders, saved model weights, and dependency list needed to reproduce the training and evaluation workflow.
+This repository contains the main training notebook, dependency list, and configuration files for reproducible model development.
 
 ## Repository contents
 
-- `Vanilla_CNN_And_Finetune.ipynb` — Jupyter notebook with the full training, validation, and evaluation pipeline
+- `Vanilla_CNN_And_Finetune.ipynb` — main Jupyter notebook with data loading, model definition, training, evaluation, and saving
 - `requirements.txt` — Python package list required to run the notebook
-- `cnn_best.h5`, `cnn_best.keras`, `vgg_best.h5` — saved Keras model files
-- `data/` — prepared dataset, separated into `train/`, `val/`, and `test/`
-- `PetImages/` — original cats and dogs source images
-- `venv/` — local Python virtual environment
+- `README.md` — project documentation
+- `.gitignore` — repository ignore rules for local files and large artifacts
+
+> The dataset, model weight files, and local virtual environment are intentionally excluded from version control.
+
+## Project data and models
+
+This repository expects the following local paths when running the notebook:
+
+- `data/` — processed dataset split into `train/`, `val/`, and `test/`
+- `PetImages/` — original raw image source files for cats and dogs
+- `cnn_best.h5`, `cnn_best.keras`, `vgg_best.h5` — optional saved model weight files for inference or resuming training
+
+If you do not have these files locally, either regenerate them with the notebook or download them from a separate archive.
 
 ## Dataset layout
 
-The `data/` folder should contain the processed dataset split by class and usage:
+The processed dataset should be arranged as follows:
 
 - `data/train/cats/`
 - `data/train/dogs/`
@@ -27,18 +37,22 @@ The `data/` folder should contain the processed dataset split by class and usage
 - `data/test/cats/`
 - `data/test/dogs/`
 
-The `PetImages/` folder contains the original raw image source files for cats and dogs.
+The `PetImages/` folder should contain the original raw images in:
+
+- `PetImages/Cat/`
+- `PetImages/Dog/`
 
 ## Setup
 
 1. Open a terminal in the repository root.
-2. Activate the virtual environment:
+2. Create and activate a Python virtual environment if needed:
 
    ```powershell
+   python -m venv venv
    .\venv\Scripts\Activate.ps1
    ```
 
-3. Install dependencies if needed:
+3. Install dependencies:
 
    ```powershell
    pip install -r requirements.txt
@@ -48,25 +62,28 @@ The `PetImages/` folder contains the original raw image source files for cats an
 
 ## Usage
 
-- Run the notebook cells from top to bottom.
-- The notebook includes data loading, model definition, training, evaluation, and model saving.
-- Use the saved weights (`cnn_best.h5`, `cnn_best.keras`, `vgg_best.h5`) for inference or to resume training.
+- Open `Vanilla_CNN_And_Finetune.ipynb`.
+- Run the notebook cells in order.
+- If model weights are available locally, use them for inference or fine-tuning.
+- If not, train the models from scratch with the notebook.
 
 ## Notes
 
-- The repository includes the data folders and saved model files so the project can be reproduced locally.
-- If you want a lighter repository, you can keep `data/`, `PetImages/`, and model weight files out of version control and regenerate them locally.
+- Large files and folders such as `data/`, `PetImages/`, and model weights are excluded from Git using `.gitignore`.
+- Keep the notebook and dependency list tracked in version control.
+- Use the included `requirements.txt` to reproduce the environment on another machine.
 
 ## Recommended workflow
 
-1. Activate the environment.
-2. Open `Vanilla_CNN_And_Finetune.ipynb`.
-3. Test the training and evaluation pipeline.
-4. Save model checkpoints and update the notebook as needed.
+1. Prepare or download the dataset locally.
+2. Activate the virtual environment.
+3. Install required packages.
+4. Open and run `Vanilla_CNN_And_Finetune.ipynb`.
+5. Save trained weights locally if needed.
 
-## Recommended `.gitignore`
+## `.gitignore`
 
-Files to ignore for a cleaner repository:
+This repository ignores local artifacts and large binary files:
 
 ```gitignore
 venv/
@@ -76,4 +93,8 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .vscode/
+data/
+PetImages/
+*.h5
+*.keras
 ```
